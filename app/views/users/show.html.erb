@@ -1,0 +1,14 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Profil </h1>
+    
+  </div>
+</div>
+  <p> 
+  Son nom :  <%= @user.last_name %> <%= @user.first_name %><br/>
+  Sa description : <%= @user.description %> <br/>
+  Son age : <%= @user.age %><br/>
+  Sa ville : <%= @user.city.name %><br/>
+  Son mail : <%= @user.email %><br/>
+  </p>

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :team
   resources :contact
   resources :gossips
+  resources :users
+  resources :cities
 end

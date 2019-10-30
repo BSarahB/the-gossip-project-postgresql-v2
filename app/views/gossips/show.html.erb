@@ -9,9 +9,20 @@
 <div class="jumbotron">
 
  <h3>PAGE POTIN </h3>
-  <p>Voici la page du potin n <%=@gossip.id%> cree le cree le <%= @gossip.created_at %></p> 
-  <p class="lead"> Son titre : <%=@gossip.title %> </p>
-  <p class="lead"> Son contenu : <%= @gossip.content %> </p>
+  <p>Voici la page du potin n <%=@gossip.id%>, cree le <%= @gossip.created_at %></p> 
+
+  <!-- Affiche le titre et le contenu du potin-->
+  <p class="lead"> Titre : <%=@gossip.title %> </p>
+  <p class="lead"> Contenu : <%= @gossip.content %> </p>
+  
+  <!-- Affiche le nom de l auteur et le lien route "../users/#{@gossip.user_id}" : 2 eme facon de l ecrire-->
+   <p> Auteur :  <%= link_to "#{User.find(@gossip.user_id).first_name} #{User.find(@gossip.user_id).last_name}", user_path(:id => @gossip.user.id) %> </p>
+
+
+  <!-- Affiche la ville de l auteur et le lien route "../cities/#{User.find(@gossip.user_id).city_id}"  : 2eme facon de l ecrire-->
+  <p> Ville : <%= link_to User.find(@gossip.user_id).city.name, "../cities/#{User.find(@gossip.user_id).city_id}" %> </p>
+  
+
   <hr class="my-4">
   
   
