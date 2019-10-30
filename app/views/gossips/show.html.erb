@@ -1,0 +1,21 @@
+
+<html>
+  <title>
+      Page potin
+  </title>
+
+  <body>
+
+<div class="jumbotron">
+
+ <h3>PAGE POTIN </h3>
+  <p>Voici la page du potin n <%=@gossip.id%> cree le cree le <%= @gossip.created_at %></p> 
+  <p class="lead"> Son titre : <%=@gossip.title %> </p>
+  <p class="lead"> Son contenu : <%= @gossip.content %> </p>
+  <hr class="my-4">
+  
+  
+</div>    
+      <a href="/">Lien pour revenir à la page des potins</a>
+  </body>
+</html>

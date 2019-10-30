@@ -1,0 +1,19 @@
+
+<body>
+  <h1> BIENVENUE A BORD DU GOSSIP PROJECT </h1>
+  
+
+  <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 120px">
+    <% @gossips.each do |gossip| %>
+      <div class="card text-white bg-secondary mb-3" style="width: 30rem;">
+        <div class="card-header"> Auteur : <%= User.find(gossip.user_id).first_name %>  <%= User.find(gossip.user_id).last_name %> </div>
+        <div class="card-body">
+          <h5 class="card-title">Titre du gossip : <%= gossip.title %></h5>
+               <%= link_to 'Voir', gossip_path(:id => gossip.id), class: 'btn btn-secondary bg-info' %>
+          <div class="card-footer"> </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</body>

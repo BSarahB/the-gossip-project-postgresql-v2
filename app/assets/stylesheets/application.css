@@ -1,0 +1,27 @@
+
+h1{
+	color: red;
+	font-family: "Arial";
+	text-align: center;
+	font-style : italic;
+
+}
+
+p{
+	color: blue;
+	
+}
+
+
+*{
+  text-align: center;
+  text-decoration: none;
+}
+
+
+
+.form {
+  text-align: right;
+  padding-left: 30%;
+  
+}
