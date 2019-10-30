@@ -2,6 +2,19 @@
   <head>
     <title>Créer un potin</title>
   </head>
+
+ <% if @gossip.errors.any? %>
+ <!-- Alerte Bootstrap https://getbootstrap.com/docs/4.2/components/alerts/-->
+  <div class="alert alert-danger" role="alert">
+    <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   <body>
     <h1>Crée un potin !</h1>
     <p>Balance ton potin via le formulaire ci-dessous</p>
