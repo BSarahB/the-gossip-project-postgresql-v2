@@ -2,6 +2,10 @@
 <body>
   <h1> BIENVENUE A BORD DU GOSSIP PROJECT </h1>
   
+  <!-- ici on cree le bouton qui clique va nous amener au formulaire-->
+   <%= button_to "Je cree un nouveau potin", "gossips/new", :id => "open-contacts-dialog-btn", :class => "btn btn-primary btn-lg", :method => :get %>
+
+  
 
   <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 120px">
     <% @gossips.each do |gossip| %>

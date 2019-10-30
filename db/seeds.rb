@@ -1,5 +1,7 @@
-
 require 'faker'
+
+
+
 10.times do		
 	City.create(name: Faker::Address.city, zip_code: Faker::Address.zip)
 end
@@ -42,4 +44,5 @@ end
 puts "on cree 20 likes ou un like de comment ou de gossip"
 
 puts "Notre database a bien ete creee"
+
 
