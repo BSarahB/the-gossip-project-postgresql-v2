@@ -51,11 +51,20 @@
 
    <a href="<%= gossips_path %>"class="btn btn-primary">Revenir à la page des potins</a>
    
-   <% @comments.each do |comment| %>
+   <% @comments.each do |comment| %> <!-- comme on fait une boucle, pour chaque commentaire on aura les boutons supprime et edite et les focnstions qui vont avec-->
     <% if @gossip.id == comment.gossip_id %>
       <li class="list-group-item list-group-item-primary"><%= current_user.first_name %> Commentaire : <br><%= comment.content %>
         <p> <br>
-         
+         <% if session[:user_id]%> <!-- si le hash est bien existant dans le navigateur  -->
+
+         <!--Conditions pour supprimer ou editer un commentaire, etre l auteur du gossip ou du commentaire -->
+            <% if current_user.id == @gossip.user_id || current_user.id == comment.user_id%>
+
+        <!-- liens boutons pour supprimer et editer et pointent vers la route du commentaire specifique du gossip specifique pour lui appliquer la methode#edit dans le controller comments et la methode destroy-->
+              <%= link_to 'Editer le commentaire', "/gossips/#{@gossip.id}/comments/#{comment.id}/edit", class: 'btn btn-primary btn-sm' %> 
+              <%= link_to 'Supprimer le commentaire', "/gossips/#{@gossip.id}/comments/#{comment.id}", method: :delete, class: 'btn btn-danger btn-sm' %>
+            <%end%>
+          <%end%>
         </p>
       </li>
     <% end %>

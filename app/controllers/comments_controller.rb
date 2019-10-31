@@ -28,5 +28,22 @@ class CommentsController < ApplicationController
           redirect_to gossips_path
       end
     end
+  
+  def edit 
+    #on a besoin des 2 infos pour acceder au commentaire
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.find(params[:id])
+  end
+
+
+
+  def destroy
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @gossip # correspond a rails routes : gossip GET  /gossips/:id(.:format)  gossips#show soit l affichage d un potin
+  end
+
+  
 
 end
