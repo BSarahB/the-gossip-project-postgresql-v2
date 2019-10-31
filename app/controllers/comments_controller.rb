@@ -20,13 +20,13 @@ class CommentsController < ApplicationController
    	 #OK ca envoie bien ici 
 
 
-        @comment = Comment.new(content: params[:content], user_id: 3, gossip_id: params[:gossip_id])
-        if @comment.save
-          flash[:success] = 'Le commentaire a ete cree avec succes'
-          redirect_to(@comment.gossip)
+      @comment = Comment.new(content: params[:content], user: User.find_by(id: session[:user_id]), gossip_id: params[:gossip_id])
+      if @comment.save
+        flash[:success] = 'Le commentaire a ete cree avec succes'
+        redirect_to(@comment.gossip)
         else
-           render :new
-        end
+          redirect_to gossips_path
+      end
     end
 
 end

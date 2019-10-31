@@ -45,8 +45,21 @@
    <!-- AJout du lien pour creer un commentaire donc ca pointe vers new MAIS COMME PASSE PAR un gossip particulier on va devoir appliquer nested resources pour pouvoir afficher la liste des commentaires mais seulement ceux liés à un gossip donné. Tu veux pouvoir créer un commentaire en le liant à un gossip donné.-->
   <%= link_to 'Ajouter un nouveau commentaire', "/gossips/#{@gossip.id}/comments/new", class: 'btn btn-primary btn-sm' %> <br/> <br/> <br/>
 <!--"/gossips/#{@gossip.id}/comments/new" est l equivalent de new_gossip_comment_path -->
+
+
+
+
    <a href="<%= gossips_path %>"class="btn btn-primary">Revenir à la page des potins</a>
-  
+   
+   <% @comments.each do |comment| %>
+    <% if @gossip.id == comment.gossip_id %>
+      <li class="list-group-item list-group-item-primary"><%= current_user.first_name %> Commentaire : <br><%= comment.content %>
+        <p> <br>
+         
+        </p>
+      </li>
+    <% end %>
+  <% end %>
 </div>    
 
 
