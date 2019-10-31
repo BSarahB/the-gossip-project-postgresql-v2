@@ -78,6 +78,11 @@ end
   def destroy
     # Méthode qui récupère le potin concerné et le détruit en base
     # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+      @gossip = Gossip.find(params[:id])
+      @gossip.destroy
+      flash[:success] = 'Le potin a ete detruit avec succes!'
+      redirect_to gossips_path #correspond a gossips#index ($rails routes | grep gossips)
+
   end
 
 end
