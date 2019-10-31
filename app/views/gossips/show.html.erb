@@ -23,6 +23,9 @@
   <p> Ville : <%= link_to User.find(@gossip.user_id).city.name, "../cities/#{User.find(@gossip.user_id).city_id}" %> </p>
   
 
+  <!-- Lien pour editer le potin, qui nous envoie sur le affichage du formulaire d edition le Update du CRUD donc Get pointe vers controller gossips et execute la methode #edit qui execute la view edit.html.erb-->
+  <%= link_to 'Editer le potin', edit_gossip_path, class: 'btn btn-primary' %>
+
   <hr class="my-4">
   
   

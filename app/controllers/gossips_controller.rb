@@ -50,6 +50,7 @@ end
 
   def edit
     # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
+    @gossip = Gossip.find(params[:id])
   end
 
   def update

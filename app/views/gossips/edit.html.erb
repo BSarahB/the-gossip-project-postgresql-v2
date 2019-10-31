@@ -1,0 +1,30 @@
+<html>
+
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p> Nous n avons pas pu mettre a jour ce potin pour les raisons suivantes :  </p>
+        <ul>
+          <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+  <h1> MODIFIER LE POTIN </h1>
+  <p> Vous pouvez modifier le titre et le contenu si vous le souhaitez</p> <br/> <br/>
+
+  <body>
+    <%= form_for @gossip do |f| %>
+      <div>
+        <label >Title </label>
+        <%= f.text_field :title, class: 'form-control' %>
+        <label >Content </label>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary"> Modifier </button>
+      </div>
+    <% end %>
+  </body>
