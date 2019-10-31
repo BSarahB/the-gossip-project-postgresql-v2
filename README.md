@@ -24,7 +24,8 @@ $ bundle install
 
 $ rails db:migrate
 
-$ rails db seed
+$ rails db:seed
+if any problem du to the seed, drop the data base with $ rails db:drop then $ rails db:create $ rails db:migrate $ rails db:migrate:status and rails db:seed
 
 $ rails server
 
