@@ -4,7 +4,7 @@
   </head>
 
  <% if @gossip.errors.any? %>
- <!-- Alerte Bootstrap https://getbootstrap.com/docs/4.2/components/alerts/-->
+ <!-- Alerte Bootstrap-->
   <div class="alert alert-danger" role="alert">
     <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
     <ul>
@@ -28,10 +28,10 @@
  <!-- L authenticity token va nous permettre de securiser la requete -->
    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
 
-      <%= label_tag 'Title' %>
+      <%= label_tag 'Titre du potin' %>
       <%= text_field_tag 'title'%>
       <br/> <br/>
-      <%= label_tag 'Content' %>
+      <%= label_tag 'Contenu du potin' %>
       <%= text_area_tag 'content'%>
       <br/> <br/>
       <%= submit_tag "Create Gossip" %>
