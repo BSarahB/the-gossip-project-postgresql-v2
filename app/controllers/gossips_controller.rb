@@ -53,11 +53,27 @@ end
     @gossip = Gossip.find(params[:id])
   end
 
-  def update
+  def update #le formulaire d edition pointe ici ici ON ACTUALISE LE GOSSIP POUR L ENREGISTRER EN BDD
     # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
     # pour info, le contenu de ce formulaire sera accessible dans le hash params
     # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
+     
+    #@model = Model.find(params[:id])
+    #if @model.update(tes_params)
+    #redirect_to @model
+    #else
+    #render :edit
+   #end
+
+       @gossip = Gossip.find(params[:id])
+       if @gossip.update('title' => params[:title], 'content' => params[:content], 'user_id' => @gossip.user_id) #aide demandee
+        flash[:success] = 'Potin bien mis à jour !'
+        redirect_to @gossip  # notre gossips#show merci rails routes |grep gossips... mon meilleur ami
+      else
+      render :edit
+      end
   end
+
 
   def destroy
     # Méthode qui récupère le potin concerné et le détruit en base
