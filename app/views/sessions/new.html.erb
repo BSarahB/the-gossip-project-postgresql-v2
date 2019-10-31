@@ -1,0 +1,21 @@
+<body>
+    <h1>LOG IN </h1>
+    
+<!-- Formulaire form_tag du https://launchschool.com/books/demystifying_rails/read/form_helpers#formtag -->
+    
+ <!--Le formulaire va POINTER vers la methode #create dans le controller sessions Jamy, nous dit c'est pas super intuitif, mais PAR CONVENTION le POST de création va à /sessions et non pas /sessions/new -->
+
+ <%= form_tag url_for(action: 'create'), method: "post", class: "form" do %>
+
+ <!-- L authenticity token va nous permettre de securiser la requete -->
+
+      <%= label_tag 'Email' %>
+      <%= text_field_tag 'email'%>
+      <br/> <br/>
+      <%= label_tag 'Password' %>
+      <%= text_area_tag 'password'%>
+      <br/> <br/>
+      <%= submit_tag "Log In" %>
+    <% end %>
+ </body>>
+</html>

@@ -7,50 +7,58 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
 <!-- Ajout CDN BOOTSTRAP -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
-  <body>
+  
     <!-- Ajout Header et Navbar -->
-    <header>  
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-primary">
-      <a class="navbar-brand" href="#">Gossip Boat</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <%= link_to "Accueil", gossips_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Contact", contact_index_path, class: "nav-link" %> <!-- Le link_to genere lequivalent de la balise HTML a, le path correspond au prefix de la route + path l equivalent du href pour chercher l URL correspondante-->
-            </li>
-             <li class="nav-item">
-            <%= link_to "Team", team_index_path, class: "nav-link" %>
-            </li>
+    
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-primary">
+          <a class="navbar-brand" href="#">Gossip Boat</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                   <%= link_to "Accueil", gossips_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Contact", contact_index_path, class: "nav-link" %> <!-- Le link_to genere lequivalent de la balise HTML a, le path correspond au prefix de la route + path l equivalent du href pour chercher l URL correspondante-->
+                </li>
+                <li class="nav-item">
+                   <%= link_to "Team", team_index_path, class: "nav-link" %>
+                </li>
+              </ul>
+            </div>  
+    
+       <div>
+
+          <ul class= "nav navbar-nav navbar-right">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              User
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+              <a class="dropdown-item" href="/users/new">Sign up</a>
+              <a class="dropdown-item" href="/sessions/new">Log in</a>
+            </div>
+            </div>
+           <li class="nav-item">
+          
+           </li>
           </ul>
-        </div>
-    </nav>
+      </div>
 
-     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <a class="navbar-brand" href="#">Gossip Poject</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-       <a class="nav-item nav-link" href="#">Features</a>
-       <a class="nav-item nav-link" href="#">Pricing</a>
-       <a class="nav-item nav-link disabled" href="#">Disabled</a>
-      </div>
-      </div>
       </nav>
-    -->
-     </header>
+
+
+
+
 
     <%= yield %>
 
-  </body>
+  
 </html>

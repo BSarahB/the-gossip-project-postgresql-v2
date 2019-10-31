@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root 'gossips#index'
 
 
@@ -10,7 +11,9 @@ Rails.application.routes.draw do
   resources :cities
   resources :comments
 
-  resources :gossips do
+  resources :gossips do  #nested routes pour imbriquer nos gossips et nos comments
     resources :comments
   end
+
+  resources :sessions, only: [:new, :create, :destroy]
 end
