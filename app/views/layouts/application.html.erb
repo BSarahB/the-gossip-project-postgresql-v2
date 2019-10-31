@@ -35,19 +35,25 @@
             </div>  
     
        <div>
-
+    <!-- ul pour le login -->
           <ul class= "nav navbar-nav navbar-right">
+              <% if current_user == nil %> <!-- si pas connexion detectee = pas de hash session donc renvoie nil et pas l objet user    curent_user  <==> User.find_by(id: session[:user_id]-->
             <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
               User
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-              <a class="dropdown-item" href="/users/new">Sign up</a>
-              <a class="dropdown-item" href="/sessions/new">Log in</a>
+              <a class="dropdown-item" href="/users/new">Sign up</a> <!-- notre lien vers le formulaire tag qu on retrouve dans le new.html.erb du controller users-->
+              <a class="dropdown-item" href="/sessions/new">Log in</a> <!--notre lien vers le formulaire de Log in qu o retrouve dans la view new.html.erb du controller sessions-->
             </div>
             </div>
+          <% end %>
+
            <li class="nav-item">
-          
+          <% if current_user %> 
+          <!-- on appelle la methode destroy du controller sessions-->
+            <%= link_to "Se deconnecter", session_path(session.id), :class => "nav-link", method: :delete %>
+          <% end %>
            </li>
           </ul>
       </div>

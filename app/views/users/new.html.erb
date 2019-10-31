@@ -1,15 +1,14 @@
 <html>
-
   <head>
-    <title>Créer un potin</title>
+    <title>Créer un compte Utilisateur</title>
   </head>
 
- <% if @gossip.errors.any? %>
+ <% if @user.errors.any? %>
  <!-- Alerte Bootstrap-->
   <div class="alert alert-danger" role="alert">
     <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
     <ul>
-      <% @gossip.errors.full_messages.each do |message| %>
+      <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
@@ -17,8 +16,8 @@
   <% end %>
 
   <body>
-    <h1>Crée un potin !</h1>
-    <p>Balance ton potin via le formulaire ci-dessous</p>
+    <h1>Crée ton compte Utilisateur !</h1>
+   
 
 <!-- Formulaire form_tag du https://launchschool.com/books/demystifying_rails/read/form_helpers#formtag -->
     
@@ -29,13 +28,40 @@
  <!-- L authenticity token va nous permettre de securiser la requete -->
    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
 
-      <%= label_tag 'Titre du potin' %>
-      <%= text_field_tag 'title'%>
-      <br/> <br/>
-      <%= label_tag 'Contenu du potin' %>
-      <%= text_area_tag 'content'%>
-      <br/> <br/>
-      <%= submit_tag "Create Gossip" %>
-    <% end %>
+   
+  <%= label_tag 'First Name' %>
+  <%= text_field_tag 'first_name'%>
+  <br /> <br />
+  <%= label_tag 'Last Name' %>
+  <%= text_field_tag 'last_name'%>
+  <br /> <br />
+
+  <%= label_tag 'Email' %>
+  <%= text_field_tag 'email'%>
+  <br /> <br />
+
+  <%= label_tag 'City' %>
+  <%= text_field_tag 'city_name'%>
+  <br /> <br />
+
+  <%= label_tag 'Zip code' %>
+  <%= text_field_tag 'zip_code'%>
+  <br /> <br />
+
+  <%= label_tag 'Password' %>
+  <%= text_field_tag 'password'%>
+  <br /> <br />
+
+
+  <%= label_tag 'Description' %>
+  <%= text_area_tag 'description'%>
+  <br /> <br />
+
+
+  <%= submit_tag "Create user" %>
+
+
+ <% end %>
  </body>>
+
 </html>

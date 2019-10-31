@@ -1,5 +1,11 @@
 
 <html>
+
+<!-- On met le flash ici pour que dans la view qui affiche le gossip en question puisse s executer les codes flash du controller gossips (dans la methode update qui renvoie a view gossip show.html.erb)-->
+<% flash.each do |key, value| %>
+  <div class="alert alert-success" role="alert"> <%= value %> </div>
+<% end %>
+
   <title>
       Page potin
   </title>
@@ -23,12 +29,18 @@
   <p> Ville : <%= link_to User.find(@gossip.user_id).city.name, "../cities/#{User.find(@gossip.user_id).city_id}" %> </p>
   
 
+
+<!--CONDITIONS POUR QUE USER PUISSE DELETE OU EDIT UN POTIN : si user logge et si auteur du gossip-->
+  <% if session[:user_id]%> 
+      <% if current_user.id == @gossip.user_id %>
+
   <!-- Lien pour editer le potin, qui nous envoie sur le affichage du formulaire d edition le Update du CRUD donc Get pointe vers controller gossips et execute la methode #edit qui execute la view edit.html.erb-->
   <%= link_to 'Editer le potin', edit_gossip_path, class: 'btn btn-primary' %>
 <!--on renvoie ici sur gossips#show soit afficher une ressource precise comme le potin vient d etre supprime rien n apparait et la methode du controller gossips update continue d etre executee en redirigeant vers redirect_to gossips_path #correspond a gossips#index ($rails routes | grep gossips) et on a tous nos gossips - celui supprime en BDD
 -->
   <%= link_to 'Supprimer le potin', gossip_path(@gossip), method: :delete, class: 'btn btn-danger' %>
-
+      <%end%>
+  <%end%>
   <hr class="my-4">
    <!-- AJout du lien pour creer un commentaire donc ca pointe vers new MAIS COMME PASSE PAR un gossip particulier on va devoir appliquer nested resources pour pouvoir afficher la liste des commentaires mais seulement ceux liés à un gossip donné. Tu veux pouvoir créer un commentaire en le liant à un gossip donné.-->
   <%= link_to 'Ajouter un nouveau commentaire', "/gossips/#{@gossip.id}/comments/new", class: 'btn btn-primary btn-sm' %> <br/> <br/> <br/>

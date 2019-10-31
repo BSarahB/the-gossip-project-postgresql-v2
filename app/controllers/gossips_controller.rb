@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :edit, :destroy, :show]
 
   def index
     # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
@@ -34,7 +35,7 @@ class GossipsController < ApplicationController
     #puis @gossip.save 
     #sil n y a pas de rollbacks notre save est bien effectue et notre @gossip sauve en BDD
 
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: 3) #dans rails c on recoit le message g.errors.messages
+    @gossip = Gossip.new(title: params[:title], content: params[:content], user: User.find_by(id: session[:user_id])) #pour le test user_id: 3 dans rails c on recoit le message g.errors.messages
  #=> {:user=>["must exist"], :title=>["is too short (minimum is 3 characters)"], :content=>["can't be blank"]}
 
     if @gossip.save # essaie de sauvegarder en base @gossip
@@ -83,6 +84,16 @@ end
       flash[:success] = 'Le potin a ete detruit avec succes!'
       redirect_to gossips_path #correspond a gossips#index ($rails routes | grep gossips)
 
+  end
+  private
+
+  
+
+  def authenticate_user
+    unless session[:user_id] #ou cuurent_user
+      flash[:error] = "Vous devez etre connecte pour acceder au contenu du boat" #notre flash error doit etre dans le view layout application.html.erb
+      redirect_to new_session_path #donc le log in form
+    end
   end
 
 end

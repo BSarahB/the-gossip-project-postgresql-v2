@@ -1,4 +1,9 @@
-<body>
+<% flash.each do |key, value| %>
+<div class="alert alert-danger" role="alert">
+  <%= value %>
+</div>
+<% end %>
+
     <h1>LOG IN </h1>
     
 <!-- Formulaire form_tag du https://launchschool.com/books/demystifying_rails/read/form_helpers#formtag -->
@@ -17,5 +22,5 @@
       <br/> <br/>
       <%= submit_tag "Log In" %>
     <% end %>
- </body>>
+ 
 </html>
