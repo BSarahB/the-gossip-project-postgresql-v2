@@ -1,0 +1,19 @@
+ <body>
+    <h1>Crée un potin !</h1>
+    <p>Balance ton potin via le formulaire ci-dessous</p>
+
+<!-- Formulaire form_tag du https://launchschool.com/books/demystifying_rails/read/form_helpers#formtag -->
+    
+ <!--Le formulaire va POINTER vers la methode #create dans le controller comments Jamy, nous dit c'est pas super intuitif, mais PAR CONVENTION le POST de création va à /comments et non pas /comments/new -->
+
+ <%= form_tag url_for(action: 'create'), method: "post", class: "form" do %>
+
+ <!-- L authenticity token ne semnlait pas necessaire ici d ailleurs l etait il vraiment pour le gossip n est ce pas plutot pour la creation du log in qu il se justifie...?-->
+   
+      <%= label_tag 'Contenu du commentaire' %>
+      <%= text_area_tag 'content'%>
+      <br/> <br/>
+      <%= submit_tag "Create Comment" %>
+    <% end %>
+ 
+</html>
